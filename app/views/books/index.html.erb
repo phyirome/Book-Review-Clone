@@ -1,6 +1,7 @@
 <h1>index</h1>
 <% @books.each do |book| %>
-  <div><%= book.title %></div>
+  <h2><%= link_to book.title, book_path(book) %></h2>
+  <%# 上の記述は、book_path(book.id)でも動く %>
   <div><%= book.description %></div>
   <div><%= book.author %></div>
   <div></div>
