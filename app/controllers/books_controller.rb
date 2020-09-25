@@ -13,6 +13,7 @@ class BooksController < ApplicationController
   end
   
   def create
+    # binding.pry
     @book = Book.new(book_params)
     if @book.save
       redirect_to root_path
@@ -40,7 +41,8 @@ class BooksController < ApplicationController
   private
   
   def book_params
-    params.require(:book).permit(:title, :description, :author)
+    params.require(:book).permit(:title, :description, :author).merge(user_id: current_user.id)
+    # params.require(:book).permit(:title, :description, :author)
   end
   
   def find_book
