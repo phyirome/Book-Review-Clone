@@ -1,12 +1,12 @@
-<h1>index</h1>
-<% @books.each do |book| %>
-  <h2><%= link_to book.title, book_path(book) %></h2>
-  <%# 上の記述は、book_path(book.id)でも動く %>
-  <div><%= book.description %></div>
-  <div><%= book.author %></div>
-  <div></div>
-  <div></div>
+<h1 class="current-category"><%= params[:category] %></h1>
+
+<% if @books.count == 0 %>
+  <h1>このカテゴリの本はありません</h1>
+<% else %>
+  <% @books.each do |book| %>
+    <h2><%= link_to book.title, book_path(book) %></h2>
+    <%# 上の記述は、book_path(book.id)でも動く %>
+    <div><%= book.description %></div>
+    <div><%= book.author %></div>
+  <% end %>
 <% end %>
-
-<%= link_to 'Add Book', new_book_path %>
-

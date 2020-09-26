@@ -1,7 +1,12 @@
 <h1><%= @book.title %></h1>
 <h2><%= @book.author %></h2>
+<h3>カテゴリー：<%= @book.category.name %></h3>
 <p><%= @book.description %><p>
 
-<%= link_to 'Edit', edit_book_path(@book) %>
-<%= link_to 'Delete', book_path(@book), method: :delete, data: { confirm: "Are you sure?"} %>
 <%= link_to 'トップページ', root_path %>
+
+<% if user_signed_in? && @book.user_id == current_user.id %>
+  <%= link_to 'Edit', edit_book_path(@book) %>
+  <%= link_to 'Delete', book_path(@book), method: :delete, data: { confirm: "Are you sure?"} %>
+<% end %>
+
