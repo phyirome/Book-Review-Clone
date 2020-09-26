@@ -10,11 +10,13 @@ class BooksController < ApplicationController
   
   def new
     @book = Book.new
+    @categories = Category.all.map{ |c| [c.name, c.id]}
   end
   
   def create
     # binding.pry
     @book = Book.new(book_params)
+    @book.category_id = params[:category_id]
     if @book.save
       redirect_to root_path
     else
@@ -41,7 +43,7 @@ class BooksController < ApplicationController
   private
   
   def book_params
-    params.require(:book).permit(:title, :description, :author).merge(user_id: current_user.id)
+    params.require(:book).permit(:title, :description, :author, :category_id).merge(user_id: current_user.id)
     # params.require(:book).permit(:title, :description, :author)
   end
   
