@@ -3,10 +3,17 @@
 <% if @books.count == 0 %>
   <h1>このカテゴリの本はありません</h1>
 <% else %>
-  <% @books.each do |book| %>
-    <h2><%= link_to book.title, book_path(book) %></h2>
-    <%# 上の記述は、book_path(book.id)でも動く %>
-    <div><%= book.description %></div>
-    <div><%= book.author %></div>
-  <% end %>
+  <div class="row">
+    <% @books.each do |book| %>
+      <div class="col-md-3">
+        <a href="/books/<%= book.id%>"><%= image_tag book.book_img.url(:book_index), class: "book" %></a>
+      </div>
+    <% end %>
+  </div>
 <% end %>
+
+
+    <%#= link_to book.title, book_path(book) %>
+    <%# 上の記述は、book_path(book.id)でも動く %>
+    <%#= book.description %>
+    <%#= book.author %>

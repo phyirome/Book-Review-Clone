@@ -59,3 +59,6 @@ gem 'simple_form', '~> 5.0', '>= 5.0.2'
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem "jquery-rails"
 gem "jquery-ui-rails"
+gem 'paperclip', '~> 6.1'
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
